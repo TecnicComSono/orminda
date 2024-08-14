@@ -1,0 +1,364 @@
+/* Reset básico para garantir consistência entre navegadores */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo geral do corpo */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #154295;
+    --secondary-color: #ffffff;
+    --text-color: #000000;
+    --footer-bg-color: #003366;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+.navbar-left {
+    background-color: var(--primary-color);
+}
+
+.navbar-right {
+    background-color: var(--secondary-color);
+}
+
+footer {
+    background-color: var(--footer-bg-color);
+}
+
+
+/* Estilo para o topo do cabeçalho */
+.header-top {
+    margin-left: 70px;
+    margin-right: 70px;
+    background-color: #ffffff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo do menu de navegação no topo do cabeçalho */
+.header-top nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header-top nav ul li {
+    margin-right: 20px;
+}
+
+.header-top nav ul li a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* Estilo para a seção à direita do cabeçalho */
+.header-right a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #000;
+}
+
+.header-right .social-icons a {
+    margin-left: 10px;
+}
+
+#navmart {
+    margin-top: 20px;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-bottom: 20px;
+    border: 2px solid black; /* Define a borda de 5px de largura, estilo sólido e cor preta */
+    display: flex;
+    height: 60px; /* Ajuste a altura conforme necessário */
+}
+
+
+/* Parte esquerda da barra (azul) */
+.navbar-left {
+    background-color: #154295;
+    width: 50%; /* 50% da largura */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-left h1 {
+    color: white;
+    font-size: 20px;
+}
+
+/* Parte direita da barra (branca) */
+.navbar-right {
+    background-color: #ffffff;
+    width: 50%; /* 50% da largura */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo do container do slide */
+.slide-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+/* Estilo para cada slide */
+.slide {
+    display: none;
+}
+
+/* Faz as imagens ocuparem o mesmo espaço */
+.slide-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    overflow: hidden; /* Importante para esconder partes das imagens que ultrapassem o contêiner */
+}
+
+
+
+/* Efeito de fade */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from { opacity: 0.4; } 
+    to { opacity: 1; }
+}
+
+/* Estilo para as setas de navegação */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 3px 0 0;
+}
+
+/* Posição do indicador */
+.dot-container {
+    text-align: center;
+    padding: 20px;
+    background: #ddd;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+
+/* Estilo para a barra de navegação principal */
+.main-nav ul {
+    list-style: none;
+    margin-bottom: 30px;
+    padding: 0;
+    background-color: #eee;
+    text-align: center;
+}
+
+.main-nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 15px 20px;
+    display: block;
+    font-weight: bold;
+}
+
+/* Estilo para o banner */
+.banner {
+    background-color: #eee;
+    text-align: center;
+}
+
+.banner .slide img {
+    width: 100%;
+    height: 300px; /* Ajuste para a altura desejada */
+    object-fit: cover; /* Garante que a imagem ocupe todo o espaço sem distorcer */
+}
+
+
+/* Estilo para a seção de conteúdo */
+.content {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    flex-wrap: wrap; /* Para quebrar a linha quando o espaço não for suficiente */
+}
+
+.content-item {
+    flex-basis: 30%;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo do item */
+    text-align: center; /* Centraliza o texto */
+    box-sizing: border-box; /* Inclui o padding na largura */
+    margin-bottom: 20px; /* Adiciona espaçamento inferior entre os itens */
+}
+
+.content-item img {
+    max-width: 500%;
+    max-height: 300px; /* Ajuste a altura máxima conforme necessário */
+    object-fit: contain; /* Mantém a proporção da imagem */
+    margin-bottom: 10px; /* Espaçamento entre a imagem e o texto */
+}
+
+.content-item a {
+    color: black;
+    text-decoration: none;
+}
+
+/* Estilo para o rodapé */
+footer {
+    background-color: #003366;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Inicialmente ocultar o menu móvel */
+#mobile-nav {
+    display: none; /* Ocultar menu por padrão */
+    background-color: #eee; /* Cor de fundo */
+    padding: 10px 0; /* Espaçamento interno */
+    position: absolute; /* Posição absoluta */
+    top: 60px; /* Ajustar conforme a altura do cabeçalho */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Garantir que fique acima de outros elementos */
+    border: 1px solid #ddd; /* Borda para separação */
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.3); /* Sombra para destacar o menu */
+}
+
+/* Mostrar o menu móvel quando a classe .show está presente */
+#mobile-nav.show {
+    display: block; /* Exibir menu quando a classe show está presente */
+}
+
+/* Estilo do botão do menu móvel */
+#menu-toggle {
+    background-color: #154295; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    border: none; /* Remover borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 18px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor de ponteiro ao passar sobre o botão */
+    border-radius: 5px; /* Bordas arredondadas */
+    margin: 10px; /* Espaçamento ao redor do botão */
+    position: relative; /* Posicionar em relação ao fluxo do layout */
+    z-index: 1001; /* Garantir que o botão fique acima do menu */
+}
+
+/* Botão de fechar para o menu móvel */
+#mobile-nav .close-btn {
+    background-color: #ff4d4d; /* Cor de fundo do botão de fechar */
+    color: white; /* Cor do texto */
+    border: none; /* Remover borda */
+    padding: 10px; /* Espaçamento interno */
+    font-size: 18px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor de ponteiro ao passar sobre o botão */
+    border-radius: 50%; /* Bordas arredondadas */
+    position: absolute; /* Posicionar de forma absoluta */
+    top: 10px; /* Distância do topo */
+    right: 10px; /* Distância da direita */
+}
+
+/* Estilo dos itens do menu móvel */
+#mobile-nav ul {
+    list-style: none; /* Remover marcadores da lista */
+    padding: 0;
+    margin: 0;
+}
+
+#mobile-nav ul li {
+    border-bottom: 1px solid #ddd; /* Borda inferior entre itens */
+}
+
+#mobile-nav ul li a {
+    display: block;
+    padding: 15px 20px; /* Espaçamento interno dos itens */
+    color: black; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado */
+    font-weight: bold; /* Negrito */
+    transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+}
+
+#mobile-nav ul li a:hover {
+    background-color: #ddd; /* Cor de fundo ao passar o mouse */
+}
+
+/* Mostrar o menu móvel e ocultar o menu principal em dispositivos móveis */
+@media only screen and (max-width: 768px) {
+    .mobile-menu {
+        display: block; /* Mostrar menu móvel em dispositivos menores */
+    }
+
+    .main-nav {
+        display: none; /* Ocultar menu principal em dispositivos menores */
+    }
+}
+
+/* Mostrar o menu principal e ocultar o menu móvel em dispositivos maiores */
+@media only screen and (min-width: 769px) {
+    .mobile-menu {
+        display: none; /* Ocultar menu móvel em dispositivos maiores */
+    }
+
+    .main-nav {
+        display: block; /* Exibir menu principal em dispositivos maiores */
+    }
+}
