@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola Estadual Orminda Guimarães Cotrim - Pitangueiras-SP</title>
+    <link rel="stylesheet" href="/educacao/css/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-top">
+            <nav>
+                <ul>
+                    <li><a href="https://www.saopaulo.sp.gov.br">Portal do Estado</a></li>
+                    <li><a>|</a></li>
+                    <li><a href="https://desertaozinho.educacao.sp.gov.br">DE Sertãozinho</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100063545192229">Facebook</a>
+                    <a href="https://www.instagram.com/escolaorminda/">Instagram</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="navmart">
+            <div class="navbar-left">
+                <h1>Escola Estadual Orminda Guimarães Cotrim</h1>
+            </div>
+            <img src="https://desertaozinho.educacao.sp.gov.br/wp-content/themes/k2msec/img/govsp19/header-bandeira.jpg" alt="Bandeira">
+            <div class="navbar-right"></div>
+        </div>
+
+        <!-- Menu para mobile -->
+        <div class="mobile-menu">
+            <button id="menu-toggle">☰ Menu</button>
+            <nav id="mobile-nav">
+                <button class="close-btn">&times;</button> <!-- Botão de fechar -->
+                <ul>
+                    <li><a href="/educacao/orminda/home.html">HOME</a></li>
+                    <li><a href="https://j0oficial.vercel.app">NOTÍCIAS</a></li>
+                    <li><a href="https://cmspweb.ip.tv">CMSP WEB</a></li>
+                    <li><a href="/educacao/orminda/faleconosco.html">FALE CONOSCO</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/educacao/orminda/home.html">HOME</a></li>
+                <li><a href="https://j0oficial.vercel.app">NOTÍCIAS</a></li>
+                <li><a href="https://cmspweb.ip.tv">CMSP WEB</a></li>
+                <li><a href="/educacao/orminda/faleconosco.html">FALE CONOSCO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <div class="slide-container">
+            <div class="slide fade">
+                <img src="https://midiasstoragesec.blob.core.windows.net/001/2020/04/logo-cmsp-fr-070420.png" alt="Imagem 1">
+            </div>
+            <div class="slide fade">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCcH2Aj02I_zMQaW2TROWFId6JgKsLa-6QoA&s" alt="Imagem 2">
+            </div>
+        </div>
+
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="content-item">
+            <h2>Site oficial de notícias da Escola Estadual Orminda Guimarães Cotrim</h2>
+            <p>A Escola Estadual Orminda Guimarães Cotrim possui um site chamado j0, que é um portal de notícias da escola, acesse: <a href="https://j0oficial.vercel.app">https://j0oficial.vercel.app</a></p>
+            <img src="https://j0oficial.vercel.app/j1.png" alt="j0">
+        </div>
+        <div class="content-item">
+            <h2>Escola Orminda Guimarães Cotrim e Grêmio Estudantil unidos em campanha de doação de agasalhos</h2>
+            <p>A Escola Orminda Guimarães Cotrim, em parceria com seu Grêmio Estudantil, está promovendo uma nobre campanha de doação de agasalhos. O objetivo é arrecadar roupas e cobertores para ajudar aqueles que enfrentam o frio neste inverno. Acesse a notícia em: <a href="https://j0oficial.vercel.app/campanha.html">https://j0oficial.vercel.app/campanha.html</a></p>
+            <img src="https://j0oficial.vercel.app/Campanha.jpg" alt="Campanha de Agasalhos">
+        </div>
+        <div class="content-item">
+            <h2>Alunos do 7ºA propõem a Criação de Jornal Escolar</h2>
+            <p>No final do mês de abril, durante a aula de Língua Portuguesa, ministrada pela Professora Maria Luiza Ribeiro, os alunos do 7ºA da Escola Orminda Guimarães Cotrim tiveram uma ideia brilhante: criar um jornal escolar para compartilhar notícias e acontecimentos relevantes dentro da instituição. A proposta foi calorosamente recebida por seus colegas e pela professora, que encorajou a iniciativa como uma forma de promover a expressão criativa e o engajamento dos estudantes. Acesse a notícia em: <a href="https://j0oficial.vercel.app/programa.png">https://j0oficial.vercel.app/campanha.html</a></p>
+            <img src="https://j0oficial.vercel.app/programa.png" alt="Jornal Escolar">
+        </div>
+    </section>
+
+    <footer>
+        <p>Todos os direitos reservados a Escola Estadual Orminda Guimarães Cotrim</p>
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 6000);
+        }
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        // Toggle do menu mobile
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileNav = document.getElementById('mobile-nav');
+            if (mobileNav.classList.contains('show')) {
+                mobileNav.classList.remove('show');
+                mobileNav.style.display = 'none'; // Ocultar menu
+            } else {
+                mobileNav.classList.add('show');
+                mobileNav.style.display = 'block'; // Exibir menu
+            }
+        });
+
+        // Botão de fechar o menu móvel
+        document.querySelector('#mobile-nav .close-btn').addEventListener('click', function() {
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.classList.remove('show');
+            mobileNav.style.display = 'none'; // Ocultar menu
+        });
+
+    </script>
+</body>
+</html>
