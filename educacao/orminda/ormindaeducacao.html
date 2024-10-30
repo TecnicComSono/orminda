@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Aluno</title>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+    
+    <style>
+        * {
+            font-family: "Poppins", sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .screen-1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5em;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background: white;
+            width: 280px;
+            text-align: center;
+        }
+
+        .screen-1 .logo {
+            width: 100px;
+            margin-bottom: 1em;
+        }
+
+        .screen-1 .email,
+        .screen-1 .password {
+            width: 100%;
+            padding: 0.8em;
+            background: #f9f9f9;
+            border-radius: 15px;
+            margin-bottom: 1em;
+            display: flex;
+            align-items: center;
+        }
+
+        .screen-1 input {
+            outline: none;
+            border: none;
+            width: 100%;
+            padding: 0.5em;
+            border-radius: 5px;
+            margin-left: 0.5em;
+            background: #fff;
+        }
+
+        .screen-1 .login {
+            padding: 0.8em;
+            background: #3e4684;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .screen-1 .login:hover {
+            background: #575d97;
+        }
+
+        #error-message {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        #dashboard {
+            display: none;
+            flex-direction: row;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: white;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1em;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar img {
+            width: 100px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .sidebar nav ul li {
+            margin: 10px 0;
+        }
+
+        .sidebar nav ul li a {
+            color: #333;
+            text-decoration: none;
+            padding: 8px;
+            display: block;
+            width: 100%;
+            text-align: center;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .sidebar nav ul li a:hover {
+            background: #f0f0f0;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            margin-left: 250px;
+            overflow-y: auto;
+            background: #fff;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .header .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .user-info .avatar {
+            background: #dde5f4;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            color: #3e4684;
+            font-weight: bold;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            max-width: 200px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .modal h3 {
+            color: #3e4684;
+        }
+
+        .modal button {
+            padding: 0.5em 1em;
+            background: #3e4684;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            #menu-toggle {
+                display: block;
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background: #3e4684;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 10px;
+                font-size: 1.5em;
+                cursor: pointer;
+            }
+        }
+
+        /* Esconde o botão no desktop */
+        #menu-toggle {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="menu-toggle" onclick="toggleSidebar()">☰</button>
+    <div class="screen-1">
+        <img class="logo" src="https://files.cdn-files-a.com/uploads/9892596/400_672177cfcc361.png" alt="Logo" />
+        <div class="email">
+            <ion-icon name="mail-outline"></ion-icon>
+            <input type="email" id="email" placeholder="RA do Aluno" />
+        </div>
+        <div class="password">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <input class="pas" type="password" id="password" placeholder="Senha" />
+        </div>
+        <button class="login" onclick="handleLogin()">Entrar</button>
+        <p id="error-message"></p>
+    </div>
+    <div id="dashboard">
+        <div class="sidebar">
+            <img src="https://files.cdn-files-a.com/uploads/9892596/400_672177cfcc361.png" alt="Logo da Escola" />
+            <nav>
+                <ul>
+                    <li><a href="#"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+                    <li><a href="https://sed.educacao.sp.gov.br/Boletim/BoletimEscolar">Boletim</a></li>
+                    <li><a href="home.html">Sair da conta</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <div class="user-info">
+                    <div class="avatar" id="user-avatar">AL</div>
+                    <div>
+                        <h2>Olá, <strong id="user-name">Aluno da Escola ORMINDA GUIMARÃES COTRIM.</strong></h2>
+                        <p id="user-class">7º A</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cards">
+            </div>
+        </div>
+    </div>
+
+    <div id="congrats-modal" class="modal">
+        <h3>OLÍMPIADA DE REDAÇÃO SP</h3>
+        <p>Você ganhou a medalha de Prata da REDASP!</p>
+        <button onclick="closeModal()">Fechar</button>
+    </div>
+
+    <script>
+        function handleLogin() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+            
+            errorMessage.textContent = "";
+            
+            if (email === "1142170925sp" && password === "Orminda2023@") {
+                document.querySelector(".screen-1").style.display = "none";
+                document.getElementById("dashboard").style.display = "flex";
+                
+                const userClass = document.getElementById("user-class");
+                userClass.textContent = "7º A";
+                
+                if (email === "1142170925sp") {
+                    document.getElementById("congrats-modal").style.display = "block";
+                }
+                
+                const userName = document.getElementById("user-name");
+                userName.textContent = email;
+            } else if (email === "11115sp" && password === "Orminda2023@") {
+                document.querySelector(".screen-1").style.display = "none";
+                document.getElementById("dashboard").style.display = "flex";
+                
+                const userClass = document.getElementById("user-class");
+                userClass.textContent = "8º A";
+            } else {
+                errorMessage.textContent = "Credenciais incorretas.";
+            }
+        }
+
+        function closeModal() {
+            document.getElementById("congrats-modal").style.display = "none";
+        }
+
+        function toggleSidebar() {
+            document.querySelector(".sidebar").classList.toggle("open");
+        }
+    </script>
+</body>
+</html>
